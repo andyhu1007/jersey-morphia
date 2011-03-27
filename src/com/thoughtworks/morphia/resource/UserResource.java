@@ -7,6 +7,7 @@ import org.apache.commons.logging.impl.SimpleLog;
 import org.bson.types.ObjectId;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/users")
@@ -16,7 +17,7 @@ public class UserResource {
 
     @GET
     @Path("/{id}")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") String id) {
         Log logger = new SimpleLog("");
         User user = null;
@@ -29,7 +30,8 @@ public class UserResource {
         if (user == null) {
             throw new WebApplicationException(404);
         }
-        return Response.ok(user.getName()).build();
+        logger.info(user.getId());
+        return Response.ok(user).build();
     }
 
     public void setUserDAO(UserDAO userDAO) {

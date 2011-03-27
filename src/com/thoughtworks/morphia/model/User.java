@@ -4,9 +4,15 @@ import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import org.bson.types.ObjectId;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.HashMap;
 import java.util.Map;
 
 @Entity(value = "users", noClassnameStored = true)
+@XmlRootElement
 public class User {
 
     @Id
@@ -16,7 +22,8 @@ public class User {
     private String pwd;
     private Map<String, String> extensions;
 
-    public User(){}
+    public User() {
+    }
 
     public User(String name, String pwd, Map<String, String> extensions) {
         this.name = name;
@@ -24,20 +31,24 @@ public class User {
         this.extensions = extensions;
     }
 
-    public ObjectId getId() {
-        return id;
+    @XmlElement(required = true)
+    public String getId() {
+        return id.toString();
     }
 
+    @XmlElement(required = true)
     public String getName() {
         return name;
     }
 
+    @XmlElement(required = true)
     public String getPwd() {
         return pwd;
     }
 
-    public Map<String, String> getExtensions() {
-        return extensions;
+    @XmlElement(required = true)
+    public String getExtensions() {
+        return extensions.toString();
     }
 }
 

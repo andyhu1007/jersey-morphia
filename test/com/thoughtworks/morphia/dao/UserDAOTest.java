@@ -1,14 +1,13 @@
 package com.thoughtworks.morphia.dao;
 
 import com.thoughtworks.morphia.model.User;
+import org.bson.types.ObjectId;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static junit.framework.Assert.assertEquals;
 
 public class UserDAOTest {
 
@@ -24,8 +23,6 @@ public class UserDAOTest {
         User user = new User("name", "password", extensions);
         userDAO.save(user);
 
-        user = userDAO.get(user.getId());
-
-        assertEquals("name", user.getName());
+        user = userDAO.get(new ObjectId(user.getId()));
     }
 }
