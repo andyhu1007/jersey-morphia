@@ -20,4 +20,8 @@
         <constructor-arg value="localhost"/>
         <constructor-arg value="27017"/>
     </bean>
+
+    <bean id="userResource" class="com.thoughtworks.morphia.resource.UserResource">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
 </beans>

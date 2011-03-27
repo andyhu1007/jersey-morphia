@@ -1,0 +1,77 @@
+<project name="jersey-morphia" basedir="." default="install">
+
+    <!-- project-specific variables -->
+    <property name="project.name" value="jersey-morphia" />
+    <property name="package.name" value="${project.name}.war" />
+    <property name="webapp.dir" value="/usr/local/apache-tomcat-7.0.8/webapps" />
+
+    <property name="lib.dir" value="lib" />
+    <property name="src.dir" value="src" />
+    <property name="resources.dir" value="resources" />
+    <property name="dest.dir" value="target" />
+
+    <!-- put everything in a temp folder with the right structure during the build -->
+    <property name="temp.dir" value="temp" />
+    <property name="temp.dir.web-inf" value="${temp.dir}/WEB-INF" />
+    <property name="temp.dir.lib" value="${temp.dir.web-inf}/lib" />
+    <property name="temp.dir.classes" value="${temp.dir.web-inf}/classes" />
+    <property name="temp.dir.meta-inf" value="${temp.dir}/META-INF" />
+
+    <property name="package.file" value="${dest.dir}/${package.name}" />
+
+    <path id="build.class.path">
+        <fileset dir="lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="${dest.dir}"/>
+        <delete dir="${temp.dir}" />
+        <delete dir="${temp.dir.classes}" />
+        <delete dir="${temp.dir.meta-inf}" />
+        <delete dir="${temp.dir.web-inf}" />
+    </target>
+
+    <target name="prepare" depends="clean">
+        <mkdir dir="${dest.dir}" />
+        <mkdir dir="${temp.dir}" />
+        <mkdir dir="${temp.dir.lib}" />
+        <mkdir dir="${temp.dir.meta-inf}" />
+        <mkdir dir="${temp.dir.web-inf}" />
+        <mkdir dir="${temp.dir.classes}" />
+    </target>
+
+    <!-- COMPILE -->
+    <target name="compile" depends="prepare">
+        <echo>=== COMPILE ===</echo>
+        <echo>Compiling ${src.dir} files ...</echo>
+        <javac debug="on" srcdir="${src.dir}" destdir="${temp.dir.classes}" includes="**/*">
+            <classpath refid="build.class.path" />
+        </javac>
+
+    </target>
+
+    <!-- PACKAGE -->
+    <target name="package" depends="compile">
+      <echo>=== PACKAGE ===</echo>
+
+      <!-- copy the config files -->
+      <!--<copy file="${resources.dir}/MANIFEST.MF" tofile="${temp.dir.meta-inf}/MANIFEST.MF" overwrite="true" />-->
+      <copy file="${resources.dir}/web.xml" tofile="${temp.dir.web-inf}/web.xml" overwrite="true" />
+      <copy file="${src.dir}/applicationContext.xml" tofile="${temp.dir.web-inf}/applicationContext.xml" overwrite="true" />
+
+      <!-- the ant war task. with all resources in place, create the war file -->
+      <war destfile="${package.file}" webxml="${temp.dir.web-inf}/web.xml" basedir="${temp.dir}">
+        <lib dir="${lib.dir}" />
+        <classes dir="${temp.dir.classes}" />
+      </war>
+    </target>
+
+    <!-- INSTALL -->
+	<target name="install" depends="package">
+      <echo>=== INSTALL ===</echo>
+      <copy file="${package.file}" tofile="${webapp.dir}/${package.name}" overwrite="true" />
+    </target>
+
+</project>
