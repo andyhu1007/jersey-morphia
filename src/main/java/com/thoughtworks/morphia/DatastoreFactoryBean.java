@@ -5,7 +5,7 @@ import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
-public class DatastoreFactoryBean extends AbstractFactoryBean<Datastore> {
+public class DatastoreFactoryBean extends AbstractFactoryBean {
 
     private Morphia morphia;
     private Mongo mongo;
