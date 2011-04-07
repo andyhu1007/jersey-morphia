@@ -32,6 +32,7 @@
 
     <properties>
         <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+        <env>dev</env>
     </properties>
 
     <dependencies>
@@ -113,6 +114,17 @@
     </dependencies>
 
     <build>
+        <finalName>morphia</finalName>
+        <filters>
+            <filter>src/main/filters/${env}-application.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -122,6 +134,20 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>${env}</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
