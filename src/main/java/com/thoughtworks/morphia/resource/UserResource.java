@@ -15,29 +15,22 @@ import java.net.URI;
 public class UserResource {
 
     private UserDAO userDAO;
-    private static final Log LOGGER = new SimpleLog("");
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") String id) {
-        LOGGER.info("Get user");
         User user = userDAO.get(new ObjectId(id));
         if (user == null) {
             throw new WebApplicationException(404);
         }
-        LOGGER.info(user.getId());
         return Response.ok(user).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(User user) {
-        LOGGER.info("Create user");
-        LOGGER.info(user.getName());
-        LOGGER.info(user.getPwd());
         userDAO.save(user);
-        LOGGER.info(user.getId());
         return Response.created(URI.create("/users/" + user.getId())).build();
     }
 
