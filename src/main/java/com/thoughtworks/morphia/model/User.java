@@ -16,6 +16,7 @@ public class User {
     private ObjectId id;
 
     private String name;
+
     private String pwd;
     private Map<String, String> extensions;
 
@@ -38,14 +39,23 @@ public class User {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @XmlElement(required = true)
     public String getPwd() {
         return pwd;
     }
 
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+
     @XmlElement(required = true)
     public String getExtensions() {
-        return extensions.toString();
+        return extensions == null ? null : extensions.toString();
     }
 }
 
