@@ -17,8 +17,8 @@
 
     <bean id="morphia" class="com.google.code.morphia.Morphia"/>
     <bean id="mongo" class="com.mongodb.Mongo">
-        <constructor-arg value="${filtered.mongodb.server.address}"/>
-        <constructor-arg value="${filtered.mongodb.server.port}"/>
+        <constructor-arg value="localhost"/>
+        <constructor-arg value="27017"/>
     </bean>
 
     <bean id="userResource" class="com.thoughtworks.morphia.resource.UserResource">
