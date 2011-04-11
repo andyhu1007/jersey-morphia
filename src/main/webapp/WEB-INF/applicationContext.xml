@@ -3,6 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:application.properties"/>
+    </bean>
+
     <bean id="datastore" class="com.thoughtworks.morphia.DatastoreFactoryBean">
         <property name="morphia" ref="morphia"/>
         <property name="mongo" ref="mongo"/>
@@ -17,8 +21,8 @@
 
     <bean id="morphia" class="com.google.code.morphia.Morphia"/>
     <bean id="mongo" class="com.mongodb.Mongo">
-        <constructor-arg value="localhost"/>
-        <constructor-arg value="27017"/>
+        <constructor-arg value="${mongodb.server.address}"/>
+        <constructor-arg value="${mongodb.server.port}"/>
     </bean>
 
     <bean id="userResource" class="com.thoughtworks.morphia.resource.UserResource">
