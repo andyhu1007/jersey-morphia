@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean id="datastore" class="com.thoughtworks.morphia.DatastoreFactoryBean">
+        <property name="morphia" ref="morphia"/>
+        <property name="mongo" ref="mongo"/>
+        <property name="dbName" value="test"/>
+        <property name="user" value="test"/>
+        <property name="password" value="test"/>
+    </bean>
+
+    <bean id="userDAO" class="com.thoughtworks.morphia.dao.UserDAO">
+        <constructor-arg ref="datastore"/>
+    </bean>
+
+    <bean id="morphia" class="com.google.code.morphia.Morphia"/>
+    <bean id="mongo" class="com.mongodb.Mongo">
+        <constructor-arg value="localhost"/>
+        <constructor-arg value="27017"/>
+    </bean>
+
+    <bean id="userResource" class="com.thoughtworks.morphia.resource.UserResource">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+</beans>
