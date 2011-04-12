@@ -31,7 +31,7 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(User user) {
         userDAO.save(user);
-        return Response.created(URI.create("/users/" + user.getId())).build();
+        return Response.created(URI.create(user.getId())).build();
     }
 
 
