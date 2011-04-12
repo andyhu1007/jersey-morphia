@@ -39,7 +39,6 @@ public class UserResourceIT {
         try {
             properties.load(new FileInputStream("./src/test/resources/test.properties"));
         } catch (IOException e) {
-            System.out.println(e.getMessage());
         }
 
 
