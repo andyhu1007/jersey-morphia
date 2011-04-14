@@ -2,6 +2,7 @@ package com.thoughtworks.morphia;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
+import com.google.code.morphia.validation.MorphiaValidation;
 import com.mongodb.Mongo;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
@@ -20,6 +21,7 @@ public class DatastoreFactoryBean extends AbstractFactoryBean {
 
     @Override
     protected Datastore createInstance() throws Exception {
+        new MorphiaValidation().applyTo(morphia);
         return morphia.createDatastore(mongo, dbName, user, password.toCharArray());
     }
 

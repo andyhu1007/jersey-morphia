@@ -2,7 +2,9 @@ package com.thoughtworks.morphia.model;
 
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
+import com.thoughtworks.morphia.validation.SecurityCheck;
 import org.bson.types.ObjectId;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -15,9 +17,12 @@ public class User {
     @Id
     private ObjectId id;
 
+    @NotBlank
     private String name;
 
+    @NotBlank(message = "102", groups = SecurityCheck.class)
     private String pwd;
+
     private Map<String, String> extensions;
 
     public User() {
