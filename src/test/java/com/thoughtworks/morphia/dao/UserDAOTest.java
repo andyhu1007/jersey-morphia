@@ -74,6 +74,10 @@ public class UserDAOTest {
         constraintViolations = validator.validate(user, SecurityCheck.class);
         assertEquals(1, constraintViolations.size());
         assertEquals("102", constraintViolations.iterator().next().getMessage());
+
+        constraintViolations = validator.validateProperty(user, "name");
+        assertEquals(1, constraintViolations.size());
+        assertEquals("may not be empty", constraintViolations.iterator().next().getMessage());
     }
 
 
