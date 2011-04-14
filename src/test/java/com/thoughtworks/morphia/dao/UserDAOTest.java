@@ -40,6 +40,8 @@ public class UserDAOTest {
         User user = new User("name", "password", extensions);
         userDAO.save(user);
 
+        assertNotNull(user.getLastUpdated());
+
         user = userDAO.get(new ObjectId(user.getId()));
         assertNotNull(user);
         assertEquals("name", user.getName());

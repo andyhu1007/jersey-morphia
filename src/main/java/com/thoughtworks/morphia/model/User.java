@@ -2,12 +2,14 @@ package com.thoughtworks.morphia.model;
 
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.annotations.PrePersist;
 import com.thoughtworks.morphia.validation.SecurityCheck;
 import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Date;
 import java.util.Map;
 
 @Entity(value = "users", noClassnameStored = true)
@@ -25,6 +27,9 @@ public class User {
 
     private Map<String, String> extensions;
 
+    private Date lastUpdated = new Date();
+
+
     public User() {
     }
 
@@ -33,6 +38,13 @@ public class User {
         this.pwd = pwd;
         this.extensions = extensions;
     }
+
+    // http://code.google.com/p/morphia/wiki/LifecycleMethods
+    @PrePersist
+    private void prePersist() {
+        lastUpdated = new Date();
+    }
+
 
     @XmlElement(required = true)
     public String getId() {
@@ -61,6 +73,10 @@ public class User {
     @XmlElement(required = true)
     public String getExtensions() {
         return extensions == null ? null : extensions.toString();
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
     }
 }
 
