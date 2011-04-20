@@ -49,13 +49,13 @@ public class UserResourceIT {
         Map<String, String> extensions = new HashMap<String, String>();
         extensions.put("mobile", "13232323");
         extensions.put("phone", "2323232");
-        User user = new User("name", "password", extensions);
+        User user = new User("name", "密码", extensions);
         userDAO.save(user);
         WebResource resource = client.resource(properties.getProperty(HOST) + "users/" + user.getId());
 
         String response = resource.accept(MediaType.APPLICATION_JSON_TYPE).get(String.class);
         assertTrue(response.startsWith("{\"extensions\":\"{phone=2323232, mobile=13232323}\""));
-        assertTrue(response.endsWith("\"name\":\"name\",\"pwd\":\"password\"}"));
+        assertTrue(response.endsWith("\"name\":\"name\",\"pwd\":\"密码\"}"));
     }
 
     @Test
