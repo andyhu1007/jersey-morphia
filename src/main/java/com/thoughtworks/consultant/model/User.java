@@ -1,9 +1,9 @@
-package com.thoughtworks.morphia.model;
+package com.thoughtworks.consultant.model;
 
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.PrePersist;
-import com.thoughtworks.morphia.validation.SecurityCheck;
+import com.thoughtworks.consultant.validation.SecurityCheck;
 import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.NotBlank;
 

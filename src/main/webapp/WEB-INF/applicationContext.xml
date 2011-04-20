@@ -7,7 +7,7 @@
         <property name="location" value="classpath:application.properties"/>
     </bean>
 
-    <bean id="datastore" class="com.thoughtworks.morphia.DatastoreFactoryBean">
+    <bean id="datastore" class="com.thoughtworks.consultant.DatastoreFactoryBean">
         <property name="morphia" ref="morphia"/>
         <property name="mongo" ref="mongo"/>
         <property name="dbName" value="test"/>
@@ -15,7 +15,7 @@
         <property name="password" value="test"/>
     </bean>
 
-    <bean id="userDAO" class="com.thoughtworks.morphia.dao.UserDAO">
+    <bean id="userDAO" class="com.thoughtworks.consultant.dao.UserDAO">
         <constructor-arg ref="datastore"/>
     </bean>
 
@@ -25,7 +25,7 @@
         <constructor-arg value="${mongodb.server.port}"/>
     </bean>
 
-    <bean id="userResource" class="com.thoughtworks.morphia.resource.UserResource">
+    <bean id="userResource" class="com.thoughtworks.consultant.resource.UserResource">
         <property name="userDAO" ref="userDAO"/>
     </bean>
 </beans>

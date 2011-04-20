@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="J2EE_WEB_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
+<module relativePaths="false" type="J2EE_WEB_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <exclude-output />
@@ -8,9 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
-      <excludeFolder url="file://$MODULE_DIR$/temp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -295,13 +293,9 @@
     </orderEntry>
   </component>
   <component name="WebModuleBuildComponent">
-    <setting name="EXPLODED_URL" value="file://$MODULE_DIR$/target/morphia" />
+    <setting name="EXPLODED_URL" value="file://$MODULE_DIR$/target/jersey-morphia" />
   </component>
   <component name="WebModuleProperties">
-    <deploymentDescriptor version="2.3" name="web.xml" optional="false" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
-    <webroots>
-      <root relative="/" url="file://$MODULE_DIR$/src/main/webapp" />
-    </webroots>
     <containerElement type="library" level="module">
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib/jackson-core-asl-1.7.1.jar" />
@@ -457,6 +451,10 @@
       <attribute name="URI" value="/WEB-INF/lib/morphia-validation-0.99.jar" />
       <url>jar://$MAVEN_REPOSITORY$/com/google/code/morphia/morphia-validation/0.99/morphia-validation-0.99.jar!/</url>
     </containerElement>
+    <deploymentDescriptor version="2.3" name="web.xml" optional="false" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
+    <webroots>
+      <root relative="/" url="file://$MODULE_DIR$/src/main/webapp" />
+    </webroots>
   </component>
 </module>
 

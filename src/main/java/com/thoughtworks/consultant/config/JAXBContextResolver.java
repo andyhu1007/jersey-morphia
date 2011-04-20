@@ -1,4 +1,4 @@
-package com.thoughtworks.morphia.config;
+package com.thoughtworks.consultant.config;
 
 
 import com.sun.jersey.api.json.JSONConfiguration;

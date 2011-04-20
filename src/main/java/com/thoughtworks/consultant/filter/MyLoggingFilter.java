@@ -1,4 +1,4 @@
-package com.thoughtworks.morphia.filter;
+package com.thoughtworks.consultant.filter;
 
 import com.sun.jersey.api.container.ContainerException;
 import com.sun.jersey.api.core.HttpContext;

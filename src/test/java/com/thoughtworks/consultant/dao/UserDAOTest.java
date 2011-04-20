@@ -1,8 +1,8 @@
-package com.thoughtworks.morphia.dao;
+package com.thoughtworks.consultant.dao;
 
 import com.google.code.morphia.validation.VerboseJSR303ConstraintViolationException;
-import com.thoughtworks.morphia.model.User;
-import com.thoughtworks.morphia.validation.SecurityCheck;
+import com.thoughtworks.consultant.model.User;
+import com.thoughtworks.consultant.validation.SecurityCheck;
 import org.bson.types.ObjectId;
 import org.junit.Before;
 import org.junit.Test;

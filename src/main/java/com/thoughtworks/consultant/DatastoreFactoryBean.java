@@ -1,4 +1,4 @@
-package com.thoughtworks.morphia;
+package com.thoughtworks.consultant;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;

@@ -1,4 +1,4 @@
-package com.thoughtworks.morphia.model;
+package com.thoughtworks.consultant.model;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

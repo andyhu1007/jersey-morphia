@@ -1,6 +1,6 @@
-package com.thoughtworks.morphia.config;
+package com.thoughtworks.consultant.config;
 
-import com.thoughtworks.morphia.model.User;
+import com.thoughtworks.consultant.model.User;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.WebApplicationException;

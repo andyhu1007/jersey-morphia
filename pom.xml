@@ -1,7 +1,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.thoughtworks.morphia</groupId>
-    <artifactId>morphia</artifactId>
+    <groupId>com.thoughtworks.consultant</groupId>
+    <artifactId>jersey-morphia</artifactId>
     <version>1</version>
     <packaging>war</packaging>
 

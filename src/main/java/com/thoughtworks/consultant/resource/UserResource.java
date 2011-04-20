@@ -1,7 +1,7 @@
-package com.thoughtworks.morphia.resource;
+package com.thoughtworks.consultant.resource;
 
-import com.thoughtworks.morphia.dao.UserDAO;
-import com.thoughtworks.morphia.model.User;
+import com.thoughtworks.consultant.dao.UserDAO;
+import com.thoughtworks.consultant.model.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.impl.SimpleLog;
 import org.bson.types.ObjectId;
